@@ -11,3 +11,4 @@ if __name__ == '__main__':
 
     for index, item in enumerate(items):
         print index, item.get_text().replace("\n", "")
+        print item.a['href']
