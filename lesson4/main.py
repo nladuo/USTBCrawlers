@@ -49,7 +49,7 @@ if __name__ == '__main__':
         "url": "http://scce.ustb.edu.cn/more.action?categoryId=1",
         "page": 1
     })
-    crawler.add_parser("worker", worker)
-    crawler.add_parser("detail_worker", detail_worker)
+    crawler.add_worker("worker", worker)
+    crawler.add_worker("detail_worker", detail_worker)
     crawler.start()
 

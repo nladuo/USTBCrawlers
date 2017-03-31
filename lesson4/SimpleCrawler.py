@@ -12,7 +12,7 @@ class SimpleCrawler:
     def add_task(self, task):
         self.task_queue.put(task)
 
-    def add_parser(self, identifier, parser):
+    def add_worker(self, identifier, parser):
         self.workers[identifier] = parser
 
     def start(self):
