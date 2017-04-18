@@ -10,7 +10,7 @@ if __name__ == "__main__":
         X = np.load(f)
         print "shape of dataset:", X.shape
 
-    km = KMeans(init='k-means++', n_clusters=200, verbose=1)
+    km = KMeans(init='k-means++', n_clusters=500, verbose=1)
     t0 = time()
     km.fit(X)
     print "done in %0.3fs" % (time() - t0)
