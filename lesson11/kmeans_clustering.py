@@ -10,9 +10,6 @@ if __name__ == "__main__":
         X = np.load(f)
         print "shape of dataset:", X.shape
 
-    with open("../lesson10/segments.pickle", "rb") as f:
-        segments = pickle.load(f)
-
     km = KMeans(init='k-means++', n_clusters=200, verbose=1)
     t0 = time()
     km.fit(X)
