@@ -18,9 +18,9 @@ if __name__ == '__main__':
 
     # 转化向量
     X = vectorizer.transform(contents)
-    with open("dataset.dat", "w") as f:
+    with open("dataset.pickle", "w") as f:
         print "saving dataset....."
-        np.save(f, X)
+        pickle.dump(X, f, pickle.HIGHEST_PROTOCOL)
 
     # 保存模型
     with open("vectorizer.pickle", "w") as f:
