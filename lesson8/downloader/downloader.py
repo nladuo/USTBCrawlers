@@ -1,4 +1,8 @@
 # coding:utf-8
+"""
+    CSDN验证码数据下载
+    说明:如果验证码下载不了,就直接看lesson8/captchas.zip
+"""
 import requests
 import uuid
 from PIL import Image
@@ -19,5 +23,3 @@ for i in range(100):
         os.remove(filename)
     else:
         print filename
-
-

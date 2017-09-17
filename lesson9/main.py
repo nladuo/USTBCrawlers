@@ -20,7 +20,8 @@ def save_docs(docs):
 def worker(queue, task, lock):
     offset = (task["page"] - 1) * 50
     print "downloading: page %d" % task["page"]
-    resp = requests.get("http://tieba.baidu.com/f?kw=%E5%8C%97%E4%BA%AC%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6&ie=utf-8&pn=" + str(offset))
+    resp = requests.get("http://tieba.baidu.com/f?kw="
+                        "%E5%8C%97%E4%BA%AC%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6&ie=utf-8&pn=" + str(offset))
     soup = BeautifulSoup(resp.content, "html.parser")
     items = soup.find_all("a", {"class", "j_th_tit"})
 
