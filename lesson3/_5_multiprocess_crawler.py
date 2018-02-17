@@ -15,7 +15,6 @@ def crawl_webpage(page_num):
         print page_num, index, item.get_text().replace("\n", "")
     print ""
 
-
 if __name__ == '__main__':
     p = Pool(5)
     for page in range(1, 11):  # 1-10页
