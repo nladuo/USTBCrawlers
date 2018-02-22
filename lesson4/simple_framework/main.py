@@ -8,14 +8,14 @@ from bs4 import BeautifulSoup
 
 def worker(queue, task):
     """ 爬取新闻列表页 """
-    url = task["url"] + "&page=%d" % task["page"]
+    url = task["url"] + "%d.html" % task["page"]
     print "downloading:", url
     resp = requests.get(url)
     soup = BeautifulSoup(resp.content, "html.parser")
     items = soup.find_all("div", {"class", "list_title"})
 
     for index, item in enumerate(items):
-        detail_url = "http://scce.ustb.edu.cn/" + item.a['href']
+        detail_url = "http://nladuo.cn/scce_site/" + item.a['href']
         print "adding:", detail_url
         queue.put({
             "id": "detail_worker",
@@ -25,12 +25,12 @@ def worker(queue, task):
             "title": item.get_text().replace("\n", "")
         })
 
-    if task["page"] == 3:  # 简化爬取, 只爬取3页
+    if task["page"] == 10:  # 添加结束信号
         queue.put({"id": "NO"})
     else:
         queue.put({
             "id": "worker",
-            "url": "http://scce.ustb.edu.cn/more.action?categoryId=1",
+            "url": "http://nladuo.cn/scce_site/",
             "page": task["page"]+1
         })
 
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     crawler = SimpleCrawler(5)
     crawler.add_task({
         "id": "worker",
-        "url": "http://scce.ustb.edu.cn/more.action?categoryId=1",
+        "url": "http://nladuo.cn/scce_site/",
         "page": 1
     })
     crawler.add_worker("worker", worker)

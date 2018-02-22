@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 if __name__ == '__main__':
-    resp = requests.get("http://scce.ustb.edu.cn/more.action?categoryId=1")
+    resp = requests.get("http://nladuo.cn/scce_site/")
     # print resp.content
     soup = BeautifulSoup(resp.content)
     items = soup.find_all("div", {"class": "every_list"})
