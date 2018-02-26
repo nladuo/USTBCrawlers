@@ -24,7 +24,7 @@ def modified_and_save_base(html, page_num):
 
         time = item.find("div", {"class": "list_time"}).get_text()
         print(time, title, url)
-        # get_and_save_detail(url, get_article_id(url))  # 爬取详情页
+        get_and_save_detail(url, get_article_id(url))  # 爬取详情页
 
     a_nexts = soup.find_all("a", {"name": "link_page_next"})
 
@@ -46,11 +46,13 @@ def get_and_save_detail(url, ariticle_id):
     while True:
         try:
             resp = requests.get(url)
+            soup = BeautifulSoup(resp.content, "lxml")
+            del soup.find("base")["href"]
             print(url)
             with open("html/article/%s.html" % ariticle_id, "w") as f:
-                f.write(resp.content)
+                f.write(str(soup))
             break
-        except :
+        except:
             pass
 
 base_url = "http://scce.ustb.edu.cn/more.action?categoryId=1&page=%d"
