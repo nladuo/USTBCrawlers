@@ -10,30 +10,30 @@ items = db["items"]
 
 def list_items():
     for item in items.find():
-        print item
+        print(item)
 
 # 增
-print "添加数据"
+print("添加数据")
 items.insert({"id": 1, "name": "test1"})
 items.insert({"id": 2, "name": "test2"})
 items.insert({"id": 3, "name": "test3"})
 list_items()
 
 # 删
-print "删除id为1"
+print("删除id为1")
 items.remove({"id": 1})
 list_items()
 
 # 改
-print "修改id为2的name"
+print("修改id为2的name")
 items.update({"id": 2}, {
     '$set': {'name': "test2_modified"}
 })
 list_items()
 
 # 查
-print "查找id为2"
-print items.find_one({"id": 2})
+print("查找id为2")
+print(items.find_one({"id": 2}))
 
 
 items.remove()  # 移除数据

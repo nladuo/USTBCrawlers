@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding=utf8
 """ 进程池的使用 """
 from multiprocessing import Pool
 import time
@@ -9,7 +7,7 @@ import os
 def do_something(num):
     for i in range(2):
         time.sleep(1)
-        print "doing %d, pid: %d" % (num, os.getpid())
+        print("doing %d, pid: %d" % (num, os.getpid()))
 
 if __name__ == '__main__':
     p = Pool(3)

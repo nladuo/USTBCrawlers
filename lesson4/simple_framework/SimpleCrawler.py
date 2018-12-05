@@ -1,4 +1,3 @@
-# coding=utf8
 """ 简易爬虫框架 """
 from multiprocessing import Manager, Pool
 

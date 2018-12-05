@@ -1,4 +1,3 @@
-# coding:utf-8
 """
     CSDN验证码数据下载
     说明:如果验证码下载不了,就直接看lesson8/captchas.zip
@@ -22,4 +21,4 @@ for i in range(100):
     if im.size != (48, 20):
         os.remove(filename)
     else:
-        print filename
+        print(filename)

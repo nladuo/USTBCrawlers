@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding=utf8
 """ 并行爬取北科计通学院新闻及其详情 """
 from SimpleCrawler import *
 import requests
@@ -10,7 +8,7 @@ def worker(queue, task):
     """ 爬取新闻列表页 """
     # 下载任务
     url = task["url"] + "%d.html" % task["page"]
-    print "downloading:", url
+    print("downloading:", url)
     resp = requests.get(url)
     # 解析网页
     soup = BeautifulSoup(resp.content, "html.parser")
@@ -18,7 +16,7 @@ def worker(queue, task):
 
     for index, item in enumerate(items):
         detail_url = "http://nladuo.cn/scce_site/" + item.a['href']
-        print "adding:", detail_url
+        print("adding:", detail_url)
         # 添加新任务: 爬取详情页
         queue.put({
             "id": "detail_worker",
@@ -42,12 +40,12 @@ def worker(queue, task):
 def detail_worker(queue, task):
     """ 爬取新闻详情页 """
     # 下载任务
-    print "downloading:", task['url']
+    print("downloading:", task['url'])
     resp = requests.get(task['url'])
     # 解析网页
     soup = BeautifulSoup(resp.content, "html.parser")
     click_num = soup.find("div", {"class", "artNum"}).get_text()
-    print task["page"], task["index"], task['title'], click_num
+    print(task["page"], task["index"], task['title'], click_num)
 
 
 if __name__ == '__main__':

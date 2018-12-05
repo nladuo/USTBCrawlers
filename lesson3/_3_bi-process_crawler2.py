@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding=utf8
 """ 把一个任务分成两个任务——例子2 """
 import multiprocessing
 import requests
@@ -18,7 +16,7 @@ def crawl_one_page(page_num):
         title = title_div.a.get_text()
         url = title_div.a["href"]
         date = item.find("div", {"class": "list_time"}).get_text()
-        print date, title, url
+        print(date, title, url)
 
 
 if __name__ == '__main__':
@@ -39,4 +37,4 @@ if __name__ == '__main__':
             p.join()
             p2.join()
 
-    print "used:", (time.time() - t0)
+    print("used:", (time.time() - t0))

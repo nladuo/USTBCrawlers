@@ -1,4 +1,3 @@
-# coding:utf-8
 import os
 from PIL import Image
 import numpy as np
@@ -31,5 +30,5 @@ if __name__ == "__main__":
                       os.listdir("../downloader/captchas"))
 
     for im_path in im_paths:
-        print im_path
+        print(im_path)
         split_and_save(im_path)

@@ -1,4 +1,3 @@
-# coding:utf-8
 import sys
 from PIL import Image
 import numpy as np
@@ -39,7 +38,7 @@ def split_letters(path):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print "Usage: python recognize.py <image_filename>"
+        print("Usage: python recognize.py <image_filename>")
 
     letters = split_letters(sys.argv[1])
 
@@ -47,5 +46,5 @@ if __name__ == "__main__":
     knn = KNeighborsClassifier(n_neighbors=5)
     knn.fit(X, y)
 
-    print knn.predict(letters)
+    print(knn.predict(letters))
 

@@ -3,7 +3,7 @@
 """ 分词 """
 import pymongo
 import jieba
-import cPickle as pickle
+import pickle
 
 
 def init_collection():
@@ -19,8 +19,8 @@ if __name__ == '__main__':
         key = str(item['_id'])
         val = " ".join(jieba.cut(item['title']))
         segments[key] = val
-        print key, val
-    print items.count()
+        print(key, val)
+    print(items.count())
 
     with open("segments.pickle", "w") as f:
         pickle.dump(segments, f)

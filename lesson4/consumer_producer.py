@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding=utf8
-
 from multiprocessing import Process, Queue
 import time
 
@@ -8,7 +5,7 @@ import time
 def produce(q):  # 生产
     for i in range(10000):
         if i % 2 == 0:
-            print "Produce ", i
+            print("Produce ", i)
             q.put(i)
             time.sleep(1)
 
@@ -16,7 +13,7 @@ def produce(q):  # 生产
 def produce2(q):  # 生产
     for i in range(10000):
         if i % 2 == 1:
-            print "Produce ", i
+            print("Produce ", i)
             q.put(i)
             time.sleep(1)
 
@@ -25,14 +22,14 @@ def consume(q):  # 消费
     while True:
         if not q.empty():
             value = q.get(True)
-            print 'Consumer 1, Get %s from queue.' % value
+            print('Consumer 1, Get %s from queue.' % value)
 
 
 def consume2(q):  # 消费
     while True:
         if not q.empty():
             value = q.get(True)
-            print 'Consumer 2, Get %s from queue.' % value
+            print('Consumer 2, Get %s from queue.' % value)
 
 
 if __name__ == '__main__':

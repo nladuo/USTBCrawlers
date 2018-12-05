@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding=utf8
 """ 多进程爬取北科计通学院新闻 """
 import requests
 from bs4 import BeautifulSoup
@@ -18,7 +16,7 @@ def crawl_one_page(page_num):
         title = title_div.a.get_text()
         url = title_div.a["href"]
         date = item.find("div", {"class": "list_time"}).get_text()
-        print date, title, url
+        print(date, title, url)
 
 if __name__ == '__main__':
     t0 = time.time()
@@ -30,4 +28,4 @@ if __name__ == '__main__':
     p.close()
     p.join()
 
-    print "used:", (time.time() - t0)
+    print("used:", (time.time() - t0))

@@ -1,17 +1,11 @@
-#!/usr/bin/env python
-# coding=utf8
 """ 获取贴子帖子的相关贴子 """
 import requests
 import pymongo
 from bs4 import BeautifulSoup
-import cPickle as pickle
+import pickle
 import operator
 from sklearn.metrics.pairwise import cosine_similarity
 import jieba
-import sys
-
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 
 def init_collection():
@@ -30,16 +24,16 @@ if __name__ == "__main__":
     beike = init_collection()
 
     title = get_title("http://tieba.baidu.com/p/5077010001")
-    print "title:", title
+    print("title:", title)
 
     segment = " ".join(jieba.cut(title))
 
     with open("../lesson11/km.pickle", "r") as f:
-        print "loading km.pickle ..."
+        print("loading km.pickle ...")
         km = pickle.load(f)
 
     with open("../lesson10/vectorizer.pickle", "r") as f:
-        print "loading vectorizer.pickle ..."
+        print("loading vectorizer.pickle ...")
         vectorizer = pickle.load(f)
 
     # 获取cluster
@@ -48,7 +42,7 @@ if __name__ == "__main__":
 
     # 找出所有该cluster的帖子
     tiezis = beike.find({"cluster": which_cluster})
-    print "cluster count:", tiezis.count()
+    print("cluster count:", tiezis.count())
 
     sim_tiezis = []
     for tiezi in tiezis:
@@ -61,13 +55,13 @@ if __name__ == "__main__":
 
     sim_tiezis.sort(key=operator.itemgetter("similarity"), reverse=True)
 
-    print "Result: "
+    print("Result: ")
     if len(sim_tiezis) == 0:
-        print "No similar tiezi!!"
+        print("No similar tiezi!!")
     elif len(sim_tiezis) < 20:
         for tiezi in sim_tiezis:
-            print tiezi["title"], tiezi["similarity"]
+            print(tiezi["title"], tiezi["similarity"])
     else:
         for tiezi in sim_tiezis[:20]:
-            print tiezi["title"], tiezi["similarity"]
+            print(tiezi["title"], tiezi["similarity"])
 
