@@ -14,7 +14,3 @@ print(driver.page_source)
 
 driver.quit()
 
-
-
-
-

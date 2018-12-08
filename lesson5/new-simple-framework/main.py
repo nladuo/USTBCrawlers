@@ -61,7 +61,8 @@ def init_collection():
 
 
 def insert_news(data):
-    collection.insert(data)
+    if collection.find({"title": data["title"]}).count() == 0:
+        collection.insert(data)
 
 
 if __name__ == '__main__':
