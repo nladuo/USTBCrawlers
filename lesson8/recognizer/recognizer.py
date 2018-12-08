@@ -35,16 +35,16 @@ def split_letters(path):
 
     return letters
 
+X, y = load_dataset()
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X, y.astype('uint8'))
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python recognize.py <image_filename>")
+        print("Usage: python recognizer.py <image_filename>")
 
     letters = split_letters(sys.argv[1])
-
-    X, y = load_dataset()
-    knn = KNeighborsClassifier(n_neighbors=5)
-    knn.fit(X, y)
 
     print(knn.predict(letters))
 

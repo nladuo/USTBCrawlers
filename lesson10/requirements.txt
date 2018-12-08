@@ -1,3 +1,2 @@
 numpy
 jieba
-scikit-learn
