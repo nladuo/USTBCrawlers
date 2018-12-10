@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding=utf8
 """ 分词 """
 import pymongo
 import jieba
@@ -22,6 +20,6 @@ if __name__ == '__main__':
         print(key, val)
     print(items.count())
 
-    with open("segments.pickle", "w") as f:
+    with open("segments.pickle", "wb") as f:
         pickle.dump(segments, f)
 

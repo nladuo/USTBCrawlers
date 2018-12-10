@@ -3,7 +3,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 
 if __name__ == '__main__':
-    with open("segments.pickle", "r") as f:
+    with open("segments.pickle", "rb") as f:
         segments = pickle.load(f)
 
     vectorizer = TfidfVectorizer()
@@ -15,11 +15,11 @@ if __name__ == '__main__':
 
     # 转化向量
     X = vectorizer.transform(contents)
-    with open("dataset.pickle", "w") as f:
+    with open("dataset.pickle", "wb") as f:
         print("saving dataset.....")
-        pickle.dump(X, f, pickle.HIGHEST_PROTOCOL)
+        pickle.dump(X, f)
 
     # 保存模型
-    with open("vectorizer.pickle", "w") as f:
+    with open("vectorizer.pickle", "wb") as f:
         print("saving vectorizer model.....")
-        pickle.dump(model, f)
+        pickle.dump(model, f, protocol=4)
