@@ -1,3 +1,4 @@
+# python2编写
 # coding=utf8
 from __future__ import print_function
 import requests
