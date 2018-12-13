@@ -28,7 +28,12 @@ def worker(queue, task, lock):
 
     docs = []
     for index, item in enumerate(items):
-        docs.append({"page": task["page"], "index": index, "title": item.get_text()})
+        docs.append({
+            "page": task["page"],
+            "index": index,
+            "title": item.get_text(),
+            "href": "http://tieba.baidu.com" + item.attrs["href"]
+        })
         print(task["page"], index, item.get_text())
     # 3. 保存数据
     with lock:
