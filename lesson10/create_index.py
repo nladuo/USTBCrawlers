@@ -15,7 +15,7 @@ index_mappings = {
   "mappings": {
     "tiezi": {
       "properties": {
-        "title":    {
+        "title": {
             "type": "text",
             "analyzer": "ik_max_word",
             "search_analyzer": "ik_max_word"

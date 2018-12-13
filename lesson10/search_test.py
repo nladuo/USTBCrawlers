@@ -4,9 +4,8 @@ from elasticsearch import Elasticsearch
 def search(query):
     query_contains = {
         'query': {
-            'multi_match': {
-                'query': query,
-                "fields": ["title"]
+            'match': {
+                'title': query,
             }
         }
     }
@@ -16,5 +15,5 @@ def search(query):
     return searched
 
 
-for res in search("德语")["hits"]["hits"]:
+for res in search("假期都做什么呢")["hits"]["hits"]:
     print(res["_source"]["title"], res["_score"])
